@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>eu.ha3.x.mtc</groupId>
+        <artifactId>my-tetris-controls</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>controls</artifactId>
+    <packaging>jar</packaging>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.googlecode.mavennatives</groupId>
+                <artifactId>maven-nativedependencies-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpacknatives</id>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <nativesTargetDir>target/natives</nativesTargetDir>
+                    <separateDirs>false</separateDirs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>net.java.jinput</groupId>
+            <artifactId>jinput</artifactId>
+            <version>2.0.9</version>
+        </dependency>
+        <dependency>
+            <groupId>net.java.jinput</groupId>
+            <artifactId>jinput</artifactId>
+            <version>2.0.9</version>
+            <classifier>natives-all</classifier>
+        </dependency>
+    </dependencies>
+</project>
