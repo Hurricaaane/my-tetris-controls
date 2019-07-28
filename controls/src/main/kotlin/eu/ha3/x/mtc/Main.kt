@@ -3,7 +3,7 @@ package eu.ha3.x.mtc
 fun main() {
     val virtualController: VirtualController<E8BitdoAction> = VirtualController()
     val physicalController = PhysicalController8BitDo(virtualController)
-    MyTetrisControls(virtualController).setUp(MyTetrisControls.GameType.TETRIS_EFFECT)
+    MyTetrisControls(virtualController).setUp(MyTetrisControls.GameType.HYBRID_SETTINGS)
 
     var firstLoop = true
 

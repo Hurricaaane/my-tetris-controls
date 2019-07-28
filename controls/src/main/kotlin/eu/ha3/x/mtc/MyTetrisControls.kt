@@ -17,12 +17,14 @@ class MyTetrisControls(private val virtualController: VirtualController<E8BitdoA
         when (gameType) {
             GameType.PUYO_PUYO_TETRIS -> PUYO_PUYO_TETRIS()
             GameType.TETRIS_EFFECT -> TETRIS_EFFECT()
+            GameType.HYBRID_SETTINGS -> HYBRID_SETTINGS()
         }
     }
 
     enum class GameType {
         PUYO_PUYO_TETRIS,
-        TETRIS_EFFECT
+        TETRIS_EFFECT,
+        HYBRID_SETTINGS
     }
 
     fun PUYO_PUYO_TETRIS() {
@@ -40,7 +42,7 @@ class MyTetrisControls(private val virtualController: VirtualController<E8BitdoA
     fun TETRIS_EFFECT() {
         COMMON_TETRIS()
 
-        // Puyo Puyo Tetris uses QWERTY keybinds
+        // Tetris Effect uses QWERTY keybinds
         hardDropTo(KeyEvent.VK_SPACE)
         virtualController.whenever(B, thenPress(KeyEvent.VK_Z)) // VK_Z is letter W on French keyboards
         virtualController.whenever(X, thenPress(KeyEvent.VK_A)) // VK_A is letter Q on French keyboards
@@ -50,6 +52,11 @@ class MyTetrisControls(private val virtualController: VirtualController<E8BitdoA
         virtualController.whenever(R2, thenPress(KeyEvent.VK_DOWN))
         virtualController.whenever(SELECT, thenPress(KeyEvent.VK_ENTER))
         virtualController.whenever(START, thenPress(KeyEvent.VK_ESCAPE))
+    }
+
+    fun HYBRID_SETTINGS() {
+        PUYO_PUYO_TETRIS()
+        virtualController.whenever(X, thenPress(KeyEvent.VK_A))
     }
 
     private fun COMMON_TETRIS() {
